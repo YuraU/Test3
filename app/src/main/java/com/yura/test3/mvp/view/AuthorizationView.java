@@ -6,4 +6,5 @@ public interface AuthorizationView extends MvpView {
 
     void showWeather(String weather);
 
+    void showError();
 }

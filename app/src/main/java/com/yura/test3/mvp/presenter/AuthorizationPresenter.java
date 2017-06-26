@@ -4,7 +4,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.yura.test3.api.API;
 import com.yura.test3.api.ApiFactory;
 import com.yura.test3.api.ApiService;
-import com.yura.test3.api.response.WeatherResponse;
+import com.yura.test3.mvp.model.response.WeatherResponse;
 import com.yura.test3.mvp.view.AuthorizationView;
 
 import io.reactivex.Observable;
@@ -20,11 +20,10 @@ public class AuthorizationPresenter extends BasePresenter<AuthorizationView>{
     public void getWeather(){
         final ApiService service = ApiFactory.createService(ApiService.class);
 
-        final Observable<WeatherResponse> observable = service.getWeather("Magnitogorsk,ru", "metric", "ru", API.APPID);
+        final Observable<WeatherResponse> observable = service.getWeather("Moscow,ru", "metric", "ru", API.APPID);
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                //.onErrorReturn(redirect)
                 .subscribe(new Observer<WeatherResponse>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -35,7 +34,9 @@ public class AuthorizationPresenter extends BasePresenter<AuthorizationView>{
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e) {}
+                    public void onError(@NonNull Throwable e) {
+                        getViewState().showError();
+                    }
 
                     @Override
                     public void onComplete() {}

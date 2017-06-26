@@ -1,6 +1,6 @@
 package com.yura.test3.api;
 
-import com.yura.test3.api.response.WeatherResponse;
+import com.yura.test3.mvp.model.response.WeatherResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

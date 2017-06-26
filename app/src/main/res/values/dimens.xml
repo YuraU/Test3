@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="auth_padding_top">60dp</dimen>
+    <dimen name="auth_padding">32dp</dimen>
+    <dimen name="btn_signup_height">36dp</dimen>
+    <dimen name="btn_signup_top_margins">23dp</dimen>
+</resources>
